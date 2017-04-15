@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+<!-- CXF web service configuration start-->
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+<!-- 访问地址：http://localhost:8080/SpringCxfWS/ws/接口名/接口方法?参数&参数... -->
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+	<!-- CXF web service configuration end-->
+	  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
